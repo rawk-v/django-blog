@@ -1,22 +1,12 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width">
-        <title>Allen's Bog</title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" type="text/css" media="all" />
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" type="text/css" media="<`2:all`>" />
-    </head>
-    <body>
-        <div>
-            <h1><a href="">Allen's Blog.</a></h1>
+{% extends 'bog/base.html' %}
+{% block content %}
+    {% for post in posts %}
+    <div class="post">
+        <div class="date">
+            <p>Published date:{{ post.published_date }}</p>
         </div>
-        {% for post in posts %}
-        <div>
-            <p>{{ post.published_date }}</p>
-            <h2><a href="">{{ post.title }}</a></h2>
-            <p>{{ post.text|linebreaks }}</p>
-        </div>
-        {% endfor %}
-    </body>
-</html>
+        <h1><a href="">{{ post.title }}</a></h1>
+        <p>{{ post.text|linebreaks }}</p>
+    </div>
+    {% endfor %}
+{% endblock %}
